@@ -1,0 +1,42 @@
+name: Gerar APK
+
+on:
+  workflow_dispatch:
+  push:
+    branches:
+      - main
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Baixar projeto
+        uses: actions/checkout@v4
+
+      - name: Preparar projeto
+        run: |
+          mkdir projeto
+          unzip -q ViceCountdown_GTA6_Android.zip -d projeto
+          ROOT=$(find projeto -name settings.gradle -type f -print -quit | xargs dirname)
+          cp -R "$ROOT"/. .
+
+      - name: Configurar Java
+        uses: actions/setup-java@v4
+        with:
+          distribution: temurin
+          java-version: '17'
+
+      - name: Configurar Gradle
+        uses: gradle/actions/setup-gradle@v4
+        with:
+          gradle-version: '8.9'
+
+      - name: Compilar APK
+        run: gradle assembleDebug --no-daemon
+
+      - name: Disponibilizar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: ViceCountdown-APK
+          path: app/build/outputs/apk/debug/app-debug.apk
