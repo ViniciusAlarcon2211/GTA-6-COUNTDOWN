@@ -1,0 +1,8 @@
+#!/usr/bin/env sh
+# Lightweight launcher for CI/local environments with Gradle installed.
+# Android Studio can sync this project directly. GitHub Actions installs Gradle 8.11.1.
+if command -v gradle >/dev/null 2>&1; then
+  exec gradle "$@"
+fi
+echo "Gradle não está instalado. Abra o projeto no Android Studio ou instale Gradle 8.11.1." >&2
+exit 1

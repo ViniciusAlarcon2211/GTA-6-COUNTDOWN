@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:padding="22dp">
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Ajustes" android:textColor="@color/text" android:textStyle="bold" android:textSize="30sp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24dp"
+            android:text="NOTIFICAÇÕES" android:textColor="@color/cyan" android:textStyle="bold" android:letterSpacing=".12"/>
+        <Switch android:id="@+id/notifications" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="Notificação diária" android:textColor="@color/text"/>
+        <Button android:id="@+id/timeButton" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Horário: 19:00"/>
+        <Switch android:id="@+id/sound" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Som" android:textColor="@color/text"/>
+        <Switch android:id="@+id/vibration" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Vibração" android:textColor="@color/text"/>
+        <Button android:id="@+id/testNotification" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Testar notificação"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24dp"
+            android:text="CONTAGEM" android:textColor="@color/pink" android:textStyle="bold" android:letterSpacing=".12"/>
+        <Switch android:id="@+id/showProgress" android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:text="Mostrar progresso" android:textColor="@color/text"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp"
+            android:text="Data padrão: 19/11/2026 • marcos em 100, 90, 60, 30, 14, 7, 3, 2 e 1 dia."
+            android:textColor="@color/muted"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24dp"
+            android:text="APARÊNCIA" android:textColor="@color/purple" android:textStyle="bold" android:letterSpacing=".12"/>
+        <Spinner android:id="@+id/themeSpinner" android:layout_width="match_parent" android:layout_height="52dp"/>
+        <Spinner android:id="@+id/effectSpinner" android:layout_width="match_parent" android:layout_height="52dp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content" android:layout_marginTop="24dp"
+            android:text="APP" android:textColor="@color/cyan" android:textStyle="bold" android:letterSpacing=".12"/>
+        <TextView android:layout_width="match_parent" android:layout_height="wrap_content" android:layout_marginTop="8dp"
+            android:text="VI Countdown 1.0.0\nThe Wait Is Almost Over\n\nProjeto independente, não oficial e feito por fã. Não é afiliado, endossado ou patrocinado pela Rockstar Games ou Take-Two Interactive."
+            android:textColor="@color/muted" android:lineSpacingExtra="4dp"/>
+    </LinearLayout>
+</ScrollView>

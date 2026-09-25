@@ -1,0 +1,11 @@
+<resources>
+    <color name="bg">#090A10</color>
+    <color name="surface">#12131B</color>
+    <color name="surface2">#191A25</color>
+    <color name="pink">#FF4FB8</color>
+    <color name="cyan">#48E7FF</color>
+    <color name="purple">#9B6CFF</color>
+    <color name="text">#F7F5FA</color>
+    <color name="muted">#A7A3B3</color>
+    <color name="nav">#101119</color>
+</resources>
