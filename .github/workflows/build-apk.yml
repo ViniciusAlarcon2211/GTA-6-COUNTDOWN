@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
   push:
     branches:
-      - principal
+      - main
 
 jobs:
   build:
@@ -32,7 +32,7 @@ jobs:
         working-directory: "VI_Contagem regressiva"
         run: gradle assembleDebug --no-daemon
 
-           - name: Disponibilizar APK
+      - name: Disponibilizar APK
         uses: actions/upload-artifact@v4
         with:
           name: VI-Countdown-APK
