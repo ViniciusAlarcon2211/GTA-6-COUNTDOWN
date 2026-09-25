@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent" android:layout_height="match_parent" android:fillViewport="true">
+    <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+        android:orientation="vertical" android:gravity="center_horizontal"
+        android:paddingStart="24dp" android:paddingEnd="24dp" android:paddingTop="28dp" android:paddingBottom="24dp">
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="VI COUNTDOWN" android:textColor="@color/cyan" android:textStyle="bold"
+            android:letterSpacing=".18" android:textSize="14sp"/>
+        <TextView android:id="@+id/tagline" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="14dp" android:text="A CONTAGEM CONTINUA" android:textColor="@color/muted"
+            android:letterSpacing=".12" android:textSize="12sp"/>
+        <TextView android:id="@+id/days" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="18dp" android:text="000" android:textColor="@color/text"
+            android:textStyle="bold" android:textSize="96sp" android:includeFontPadding="false"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="DIAS" android:textColor="@color/pink" android:textStyle="bold" android:letterSpacing=".2" android:textSize="15sp"/>
+        <TextView android:id="@+id/time" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="22dp" android:text="00 : 00 : 00" android:textColor="@color/text"
+            android:fontFamily="monospace" android:textSize="28sp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:text="HRS       MIN       SEG" android:textColor="@color/muted" android:letterSpacing=".08" android:textSize="10sp"/>
+        <ProgressBar android:id="@+id/progress" style="?android:attr/progressBarStyleHorizontal"
+            android:layout_width="match_parent" android:layout_height="6dp" android:layout_marginTop="30dp"
+            android:max="1000" android:progressDrawable="@drawable/progress_track"/>
+        <LinearLayout android:layout_width="match_parent" android:layout_height="wrap_content"
+            android:layout_marginTop="28dp" android:orientation="vertical" android:padding="20dp" android:background="@drawable/card_bg">
+            <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+                android:text="MENSAGEM DO DIA" android:textColor="@color/cyan" android:textStyle="bold" android:textSize="11sp" android:letterSpacing=".12"/>
+            <TextView android:id="@+id/dailyMessage" android:layout_width="match_parent" android:layout_height="wrap_content"
+                android:layout_marginTop="10dp" android:textColor="@color/text" android:textSize="18sp" android:lineSpacingExtra="4dp"/>
+        </LinearLayout>
+        <TextView android:id="@+id/releaseDate" android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="22dp" android:textColor="@color/muted" android:textSize="12sp"/>
+        <TextView android:layout_width="wrap_content" android:layout_height="wrap_content"
+            android:layout_marginTop="8dp" android:text="@string/unofficial" android:textColor="#6FFFFFFF" android:textSize="10sp"/>
+    </LinearLayout>
+</ScrollView>
