@@ -32,8 +32,8 @@ jobs:
         working-directory: "VI_Contagem regressiva"
         run: gradle assembleDebug --no-daemon
 
-      - name: Disponibilizar APK
-36        uses: actions/upload-artifact@v4
-37        with:
-38          name: VI-Countdown-APK
-39          path: "VI_Contagem regressiva/app/build/outputs/apk/debug/app-debug.apk"
+           - name: Disponibilizar APK
+        uses: actions/upload-artifact@v4
+        with:
+          name: VI-Countdown-APK
+          path: "VI_Contagem regressiva/app/build/outputs/apk/debug/app-debug.apk"
