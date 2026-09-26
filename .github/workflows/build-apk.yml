@@ -1,4 +1,4 @@
-name: Gerar APK V2
+name: Gerar APK V3
 
 on:
   workflow_dispatch:
@@ -20,47 +20,66 @@ jobs:
           distribution: temurin
           java-version: '17'
 
-      - name: Preparar projeto V2
+      - name: Preparar projeto V3
+        shell: bash
         run: |
-          mkdir -p projeto-v2
-          unzip -q "VI_Countdown_V2_Gourmet_CORRIGIDO.zip" -d projeto-v2
+          set -e
 
-          echo "=== Projeto extraido ==="
-          find projeto-v2 -maxdepth 3 -type f | sort | head -100
+          ZIP_FILE="VI_Countdown_V3_Cinematic.zip"
 
-          echo "=== settings.gradle encontrado ==="
-          find projeto-v2 -type f \( -name "settings.gradle" -o -name "settings.gradle.kts" \)
+          if [ ! -f "$ZIP_FILE" ]; then
+            echo "ERRO: $ZIP_FILE nao foi encontrado."
+            echo "Arquivos presentes na raiz:"
+            ls -la
+            exit 1
+          fi
+
+          rm -rf projeto-v3
+          mkdir -p projeto-v3
+
+          unzip -q "$ZIP_FILE" -d projeto-v3
+
+          echo "=== V3 extraida com sucesso ==="
+          find projeto-v3 -maxdepth 3 -type f | sort | head -100
+
+          echo "=== Procurando projeto Android ==="
+          find projeto-v3 -type f \( -name "settings.gradle" -o -name "settings.gradle.kts" \)
 
       - name: Configurar Gradle
         uses: gradle/actions/setup-gradle@v4
         with:
           gradle-version: '8.11.1'
 
-      - name: Compilar APK
+      - name: Compilar APK V3
         shell: bash
         run: |
-          SETTINGS_FILE="$(find projeto-v2 -type f \( -name "settings.gradle" -o -name "settings.gradle.kts" \) | head -1)"
+          set -e
+
+          SETTINGS_FILE="$(find projeto-v3 -type f \( -name "settings.gradle" -o -name "settings.gradle.kts" \) | head -1)"
 
           if [ -z "$SETTINGS_FILE" ]; then
-            echo "ERRO: settings.gradle nao encontrado."
+            echo "ERRO: settings.gradle nao encontrado dentro da V3."
             exit 1
           fi
 
           PROJECT_DIR="$(dirname "$SETTINGS_FILE")"
 
-          echo "Projeto Android localizado em:"
+          echo "Projeto Android:"
           echo "$PROJECT_DIR"
 
           cd "$PROJECT_DIR"
+
           gradle assembleDebug --no-daemon --stacktrace
 
-      - name: Localizar APK
+      - name: Localizar APK V3
         shell: bash
         run: |
-          APK_FILE="$(find projeto-v2 -type f -name "*debug*.apk" | head -1)"
+          set -e
+
+          APK_FILE="$(find projeto-v3 -type f -name "*debug*.apk" | head -1)"
 
           if [ -z "$APK_FILE" ]; then
-            echo "ERRO: APK nao encontrado."
+            echo "ERRO: nenhum APK debug foi encontrado."
             exit 1
           fi
 
@@ -68,11 +87,11 @@ jobs:
           echo "$APK_FILE"
 
           mkdir -p apk-final
-          cp "$APK_FILE" "apk-final/VI-Countdown-V2.apk"
+          cp "$APK_FILE" "apk-final/VI-Countdown-V3.apk"
 
-      - name: Disponibilizar APK
+      - name: Disponibilizar APK V3
         uses: actions/upload-artifact@v4
         with:
-          name: VI-Countdown-V2-APK
-          path: apk-final/VI-Countdown-V2.apk
+          name: VI-Countdown-V3-APK
+          path: apk-final/VI-Countdown-V3.apk
           if-no-files-found: error
